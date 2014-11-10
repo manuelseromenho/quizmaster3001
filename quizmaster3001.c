@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> 
 
 /*http://www.cquestions.com/2011/09/how-to-convert-string-to-int-without.html*/
 /*int stringToInt(char str[]){
