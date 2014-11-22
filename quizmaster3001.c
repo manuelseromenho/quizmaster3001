@@ -19,6 +19,40 @@
     return sum;
 }*/
 
+/* #define NA 100           	   // para o menu de alunos 
+typedef struct
+{
+	long int numero;
+	char nome[60];
+	char turma [20];		
+	int idade;
+	int estado;
+			             	
+}aluno;							// */
+
+
+
+ #define NA 100 
+ #define NB 100          	   
+typedef struct
+{
+	long int numero;
+	char nome[60];
+	char turma [20];		
+	int idade;
+	int estado;
+			             	
+}alunotab;							// 
+
+
+
+
+
+
+
+
+
+
 typedef struct
 {
 	int idUser;
@@ -89,22 +123,80 @@ void aluno(char username[15])
 
 
 /***** Menu Administrador *****/
-void inserirAluno(void)
+ void inserir(alunotab *x)
 {
-	system ("cls");
 	
-	printf("\t\t\t\t Inserir Aluno");
-	getch();
-	main();
+	int n,k;
+	long int inser;
+	system ("cls");
+	printf("Numero do aluno? ");
+	scanf("%ld%*c",&inser);
+	for(n=1;n<NA;n++)
+
+	{
+	
+		if(x[n].estado!=1)
+		{
+			x[n].numero=inser;
+			printf("\n\nNome:"); 
+			gets(x[n].nome);   
+			printf("\n\nTurma:"); 
+			scanf("\n%[^\n]s",x[n].turma);
+			printf("\n\nIdade:"); 
+			scanf("%d", &x[n].idade);
+			
+			x[n].estado=1;
+			
+			printf("\n\n\nRegisto Inserido <Enter para Continuar>");
+			getch();
+			return;
+		}
+	
+	}
+	printf("ERRO! Nao foi possivel Inserir"); getch(); return;
+} 
+
+void consultarAluno(alunotab *x)
+{
+	int n;
+	system ("cls");
+	for(n=1;n<NA;n++)
+	{
+		if(x[n].estado==1)
+		{
+			printf("NUMERO=%ld\nNOME=%s\nturma=%s\nIdade=%d\n\n",
+			x[n].numero,x[n].nome,x[n].turma,x[n].idade);
+		}
+	}
+	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
 }
 
-void consultarAluno(void)
+void elimAlunos(alunotab *x)
 {
-	system ("cls");
-	
-	printf("\t\t\t\t Consultar Aluno");
-	getch();
-	main();
+	char confere;
+	int n;
+	long int eli;
+	system("cls");
+	printf("Qual o Numero do aluno que quer Eliminar? "); scanf("%ld",&eli);
+	for(n=1;n<NA;n++)
+	{
+		if(x[n].numero==eli)
+		{
+			printf("\n\nNUMERO=%ld\nNOME=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
+			x[n].numero,x[n].nome,x[n].turma,x[n].idade,x[n].estado);
+			printf("\n\nQuer mesmo eliminar? <S/N>");confere=getch();
+
+			if (confere!='S' && confere!='s')    return(0);
+
+			x[n].estado=0;
+		
+			printf("\n\n\nRegisto eliminado <enter para continuar>");
+				
+			getch();  return (1);
+		}
+	}
+	printf("ERRO! Numero nao Encontrado <Enter para Continuar>");
+	getch(); return(0);
 }
 
 void consultEditQuestoes(void)
@@ -124,31 +216,43 @@ void inserirQuestoes(void)
 	getch();
 	main();
 }
-
-void listarAlunos(void)
-{
-	system ("cls");
-	
-	printf("\t\t\t\t Listar Alunos");
-	getch();
-	main();
+/* lergravar(alunotab *x)
+{	
+	int n;
+	FILE *fich;
+		fich=fopen("C:\\alunos.txt","w+");
+		for(n=1;n<NB;n++)
+	{
+		fscanf(fich,"%ld\n", &x[n].numero);								a funçao para gravar para o ficheira
+		fscanf(fich,"%[^\n]s",x[n].nome);	
+		fscanf(fich,"%[^\n]s",x[n].turma);     
+		fscanf(fich,"\n%d\n%d\n", &x[n].idade);	
+		fscanf(fich,"\n%d\n%d\n", &x[n].estado);	      
+	}
+	fclose(fich);
 }
+/*
 /******************************/
 
 void admin(void)
 {
-	system("cls");
+	int n;
+	alunotab alu[NA];
+	for(n=0;n<NA;n++)
+	alu[n].estado=0;
 	
 	int op=0;
-	
+	do{
+	//	lergarvar(alu);
+	system("cls");
 	printf("\t\t\t\tOlá Administrador!\n\n\n\n\n\n\n");
 	
 	printf("Seleccione uma das seguintes opcoes:\n\n");
 	printf("1) Inserir Aluno\t");
-	printf("2) Consultar Aluno\t");
-	printf("3) Consultar/Editar Questões\t\n\n");
+	printf("2) Consultar Alunos\t");
+	printf("3) Eliminar Alunos\t\n\n");
 	printf("4) Inserir Questão \t");
-	printf("5) Listar Alunos \t");
+	printf("5) Consultar/Editar Questões \t");
 	printf("6) Sair \t");
 	printf("\n\n-> ");
 	
@@ -157,15 +261,19 @@ void admin(void)
 	
 	switch(op)
 	{
-		case 1: inserirAluno();break;
-		case 2: consultarAluno();break;
-		case 3: consultEditQuestoes();break;
+		case 1: inserir(alu);break;
+		case 2: consultarAluno(alu);break;
+		case 3: elimAlunos(alu);break;
 		case 4: inserirQuestoes();break;
-		case 5: listarAlunos();break;
+		case 5: consultEditQuestoes();break;
 		case 6: main();break;
-
-		default:exit(0);
-	}
+	
+		}
+		
+			
+	}while (op!='6');
+		
+	
 }
 
 /***** LOGIN *****/
