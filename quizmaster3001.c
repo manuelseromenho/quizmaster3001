@@ -19,17 +19,6 @@
     return sum;
 }*/
 
-/* #define NA 100           	   // para o menu de alunos 
-typedef struct
-{
-	long int numero;
-	char nome[60];
-	char turma [20];		
-	int idade;
-	int estado;
-			             	
-}aluno;							// */
-
 
 
  #define NA 100 
@@ -37,6 +26,7 @@ typedef struct
 typedef struct
 {
 	long int numero;
+	char pass[60];
 	char nome[60];
 	char turma [20];		
 	int idade;
@@ -123,7 +113,7 @@ void aluno(char username[15])
 
 
 /***** Menu Administrador *****/
- void inserir(alunotab *x)
+void inserir(alunotab *x)        //função para inserir alunos|useres
 {
 	
 	int n,k;
@@ -131,6 +121,7 @@ void aluno(char username[15])
 	system ("cls");
 	printf("Numero do aluno? ");
 	scanf("%ld%*c",&inser);
+	fflush(stdin);
 	for(n=1;n<NA;n++)
 
 	{
@@ -138,11 +129,16 @@ void aluno(char username[15])
 		if(x[n].estado!=1)
 		{
 			x[n].numero=inser;
-			printf("\n\nNome:"); 
-			gets(x[n].nome);   
-			printf("\n\nTurma:"); 
-			scanf("\n%[^\n]s",x[n].turma);
-			printf("\n\nIdade:"); 
+			printf("PASSWORD:"); 
+			scanf("%[^\n]s",x[n].pass);
+			fflush(stdin); 
+			printf("\nNome:"); 
+			scanf("%[^\n]s",x[n].nome); 
+			fflush(stdin); 
+			printf("\nTurma:"); 
+			scanf("%[^\n]s",x[n].turma);
+			fflush(stdin);
+			printf("\nIdade:"); 
 			scanf("%d", &x[n].idade);
 			
 			x[n].estado=1;
@@ -153,10 +149,10 @@ void aluno(char username[15])
 		}
 	
 	}
-	printf("ERRO! Nao foi possivel Inserir"); getch(); return;
+	
 } 
 
-void consultarAluno(alunotab *x)
+void consultarAluno(alunotab *x)		//função para consultar os alunos
 {
 	int n;
 	system ("cls");
@@ -164,14 +160,14 @@ void consultarAluno(alunotab *x)
 	{
 		if(x[n].estado==1)
 		{
-			printf("NUMERO=%ld\nNOME=%s\nturma=%s\nIdade=%d\n\n",
-			x[n].numero,x[n].nome,x[n].turma,x[n].idade);
+			printf("NUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nIdade=%d\n\n",
+			x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade);
 		}
 	}
 	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
 }
 
-void elimAlunos(alunotab *x)
+int elimAlunos(alunotab *x)				//função para eliminar
 {
 	char confere;
 	int n;
@@ -182,16 +178,18 @@ void elimAlunos(alunotab *x)
 	{
 		if(x[n].numero==eli)
 		{
-			printf("\n\nNUMERO=%ld\nNOME=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
-			x[n].numero,x[n].nome,x[n].turma,x[n].idade,x[n].estado);
+			printf("\n\nNUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
+			x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade,x[n].estado);
 			printf("\n\nQuer mesmo eliminar? <S/N>");confere=getch();
 
-			if (confere!='S' && confere!='s')    return(0);
-
+			if (confere!='S' && confere!='s')   
+			 return(0);
+			
+			
 			x[n].estado=0;
 		
 			printf("\n\n\nRegisto eliminado <enter para continuar>");
-				
+			
 			getch();  return (1);
 		}
 	}
@@ -199,6 +197,27 @@ void elimAlunos(alunotab *x)
 	getch(); return(0);
 }
 
+void edit(alunotab *x)							//função para editar a password
+{
+	
+	int n;
+	long int eli;
+	system("cls");
+	printf("Insira o numero de aluno que pretende mudar a password? "); scanf("%ld",&eli);
+	for(n=1;n<NA;n++)
+	{
+		if(x[n].numero==eli)
+		{
+			printf("\n\nNUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nidade=%d\n\n",x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade);
+			printf("\n\n Digite a nova password: ");
+			fflush(stdin); 
+			scanf("%[^\n]s",x[n].pass);
+			printf("\nNova password inserida");
+			getch();
+			return;
+		}
+	}
+}
 void consultEditQuestoes(void)
 {
 	system ("cls");
@@ -216,22 +235,46 @@ void inserirQuestoes(void)
 	getch();
 	main();
 }
-/* lergravar(alunotab *x)
+void leraluno(alunotab *x)					//a funçao para ler do ficheiro
 {	
 	int n;
 	FILE *fich;
-		fich=fopen("C:\\alunos.txt","w+");
+		fich=fopen("alunos.txt","r");
 		for(n=1;n<NB;n++)
 	{
-		fscanf(fich,"%ld\n", &x[n].numero);								a funçao para gravar para o ficheira
-		fscanf(fich,"%[^\n]s",x[n].nome);	
-		fscanf(fich,"%[^\n]s",x[n].turma);     
-		fscanf(fich,"\n%d\n%d\n", &x[n].idade);	
-		fscanf(fich,"\n%d\n%d\n", &x[n].estado);	      
+		fscanf(fich,"%ld\n", &x[n].numero);
+		fflush(stdin);	
+		fscanf(fich,"%s\n",x[n].pass);
+		fflush(stdin);							
+		fscanf(fich,"%s\n",x[n].nome);
+		fflush(stdin);	
+		fscanf(fich,"%s\n",x[n].turma); 
+		fflush(stdin);    
+		fscanf(fich,"%d\n", &x[n].idade);
+		fflush(stdin);	
+		fscanf(fich,"%d\n", &x[n].estado);	      
 	}
 	fclose(fich);
 }
-/*
+
+void gravar (alunotab *x)				//função para gravar no ficheiro
+{
+ 		FILE *fich;
+	int n;
+	fich=fopen("alunos.txt","w+");
+	
+
+	for(n=1;n<NB;n++)
+	{
+		if(x[n].estado==1)
+		{
+			fprintf(fich,"%ld\n%s\n%s\n%s\n%d\n%d\n",x[n].numero,x[n].pass,x[n].nome,x[n].turma, x[n].idade, x[n].estado);
+		}
+	}
+	fclose(fich);
+	main();
+}
+
 /******************************/
 
 void admin(void)
@@ -242,18 +285,20 @@ void admin(void)
 	alu[n].estado=0;
 	
 	int op=0;
+	leraluno(alu);
 	do{
-	//	lergarvar(alu);
+	
 	system("cls");
 	printf("\t\t\t\tOlá Administrador!\n\n\n\n\n\n\n");
 	
 	printf("Seleccione uma das seguintes opcoes:\n\n");
 	printf("1) Inserir Aluno\t");
 	printf("2) Consultar Alunos\t");
-	printf("3) Eliminar Alunos\t\n\n");
-	printf("4) Inserir Questão \t");
-	printf("5) Consultar/Editar Questões \t");
-	printf("6) Sair \t");
+	printf("3) Eliminar Alunos\t");
+	printf("4) Editar password \t\n\n");
+	printf("5) Inserir Questão \t");
+	printf("6) Consultar/Editar Questões \t");
+	printf("7) Sair \t");
 	printf("\n\n-> ");
 	
 	fflush(stdin);
@@ -264,14 +309,15 @@ void admin(void)
 		case 1: inserir(alu);break;
 		case 2: consultarAluno(alu);break;
 		case 3: elimAlunos(alu);break;
-		case 4: inserirQuestoes();break;
-		case 5: consultEditQuestoes();break;
-		case 6: main();break;
+		case 4: edit(alu);break;
+		case 5: inserirQuestoes();break;
+		case 6: consultEditQuestoes();break;
+		case 7: gravar(alu);
 	
 		}
 		
 			
-	}while (op!='6');
+	}while (op!='7');
 		
 	
 }
