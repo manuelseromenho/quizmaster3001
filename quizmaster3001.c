@@ -21,37 +21,25 @@
 
 
 
- #define NA 100 
- #define NB 100          	   
+#define NA 100 
+#define NB 100
+
+/***** Estrutura para alunos/users ******/          	   
 typedef struct
 {
-	long int numero;
+	int iduser;
 	char pass[60];
 	char nome[60];
 	char turma [20];		
 	int idade;
 	int estado;
 			             	
-}alunotab;							// 
+}alunotab;
+/****************************************/
 
 
 
-
-
-
-
-
-
-
-typedef struct
-{
-	int idUser;
-	char nome[15];
-	char pass[15];	
-}user;
-
-
-/***** Menu Aluno *****/
+/***** Menu Aluno/User *****/
 void jogar(void)
 {
 	system ("cls");
@@ -113,14 +101,21 @@ void aluno(char username[15])
 
 
 /***** Menu Administrador *****/
-void inserir(alunotab *x)        //função para inserir alunos|useres
+void inserir(alunotab *x)        //função para inserir alunos|users
 {
 	
 	int n,k;
-	long int inser;
-	system ("cls");
-	printf("Numero do aluno? ");
-	scanf("%ld%*c",&inser);
+	int inser;
+		
+	do{
+		system ("cls");
+		printf("Numero do aluno? ");
+		fflush(stdin);
+		//scanf("%d%*c",&inser);
+	}while(!scanf("%d%*c",&inser));
+	
+		
+	
 	fflush(stdin);
 	for(n=1;n<NA;n++)
 
@@ -128,13 +123,13 @@ void inserir(alunotab *x)        //função para inserir alunos|useres
 	
 		if(x[n].estado!=1)
 		{
-			x[n].numero=inser;
-			printf("PASSWORD:"); 
-			scanf("%[^\n]s",x[n].pass);
-			fflush(stdin); 
+			x[n].iduser=inser;
 			printf("\nNome:"); 
 			scanf("%[^\n]s",x[n].nome); 
-			fflush(stdin); 
+			fflush(stdin);
+			printf("PASSWORD:"); 
+			scanf("%[^\n]s",x[n].pass);
+			fflush(stdin);
 			printf("\nTurma:"); 
 			scanf("%[^\n]s",x[n].turma);
 			fflush(stdin);
@@ -160,14 +155,14 @@ void consultarAluno(alunotab *x)		//função para consultar os alunos
 	{
 		if(x[n].estado==1)
 		{
-			printf("NUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nIdade=%d\n\n",
-			x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade);
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade);
 		}
 	}
 	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
 }
 
-int elimAlunos(alunotab *x)				//função para eliminar
+int elimAlunos(alunotab *x)				//função para eliminar os alunos
 {
 	char confere;
 	int n;
@@ -176,10 +171,10 @@ int elimAlunos(alunotab *x)				//função para eliminar
 	printf("Qual o Numero do aluno que quer Eliminar? "); scanf("%ld",&eli);
 	for(n=1;n<NA;n++)
 	{
-		if(x[n].numero==eli)
+		if(x[n].iduser==eli)
 		{
-			printf("\n\nNUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
-			x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade,x[n].estado);
+			printf("\n\nNUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].estado);
 			printf("\n\nQuer mesmo eliminar? <S/N>");confere=getch();
 
 			if (confere!='S' && confere!='s')   
@@ -197,7 +192,7 @@ int elimAlunos(alunotab *x)				//função para eliminar
 	getch(); return(0);
 }
 
-void edit(alunotab *x)							//função para editar a password
+void edit(alunotab *x)							//função para editar a password do aluno
 {
 	
 	int n;
@@ -206,9 +201,9 @@ void edit(alunotab *x)							//função para editar a password
 	printf("Insira o numero de aluno que pretende mudar a password? "); scanf("%ld",&eli);
 	for(n=1;n<NA;n++)
 	{
-		if(x[n].numero==eli)
+		if(x[n].iduser==eli)
 		{
-			printf("\n\nNUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nidade=%d\n\n",x[n].numero,x[n].pass,x[n].nome,x[n].turma,x[n].idade);
+			printf("\n\nNUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nidade=%d\n\n",x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade);
 			printf("\n\n Digite a nova password: ");
 			fflush(stdin); 
 			scanf("%[^\n]s",x[n].pass);
@@ -235,23 +230,26 @@ void inserirQuestoes(void)
 	getch();
 	main();
 }
-void leraluno(alunotab *x)					//a funçao para ler do ficheiro
+
+void leraluno(alunotab *x)					//a funçao para ler do ficheiro do aluno/user
 {	
-	int n;
+	int n, k;
+	char nome[15]={};
 	FILE *fich;
-		fich=fopen("alunos.txt","r");
-		for(n=1;n<NB;n++)
+	fich=fopen("users.txt","r");
+	
+		
+	for(n=1;n<NB;n++)
 	{
-		fscanf(fich,"%ld\n", &x[n].numero);
-		fflush(stdin);	
-		fscanf(fich,"%s\n",x[n].pass);
-		fflush(stdin);							
-		fscanf(fich,"%s\n",x[n].nome);
-		fflush(stdin);	
-		fscanf(fich,"%s\n",x[n].turma); 
-		fflush(stdin);    
+		fscanf(fich,"%d\n", &k);
+		x[n].iduser = k;
+
+		fscanf(fich," %[^\n]s",nome);
+		strcpy (x[n].nome, nome);
+			
+		fscanf(fich,"%s\n",x[n].pass);						
+		fscanf(fich,"%s\n",x[n].turma);   
 		fscanf(fich,"%d\n", &x[n].idade);
-		fflush(stdin);	
 		fscanf(fich,"%d\n", &x[n].estado);	      
 	}
 	fclose(fich);
@@ -259,16 +257,16 @@ void leraluno(alunotab *x)					//a funçao para ler do ficheiro
 
 void gravar (alunotab *x)				//função para gravar no ficheiro
 {
- 		FILE *fich;
-	int n;
-	fich=fopen("alunos.txt","w+");
+ 	int n;
+	FILE *fich;
+	fich=fopen("users.txt","w+");
 	
 
 	for(n=1;n<NB;n++)
 	{
 		if(x[n].estado==1)
 		{
-			fprintf(fich,"%ld\n%s\n%s\n%s\n%d\n%d\n",x[n].numero,x[n].pass,x[n].nome,x[n].turma, x[n].idade, x[n].estado);
+			fprintf(fich,"%d\n%s\n%s\n%s\n%d\n%d\n",x[n].iduser,x[n].nome, x[n].pass,x[n].turma, x[n].idade, x[n].estado);
 		}
 	}
 	fclose(fich);
@@ -279,13 +277,17 @@ void gravar (alunotab *x)				//função para gravar no ficheiro
 
 void admin(void)
 {
-	int n;
-	alunotab alu[NA];
-	for(n=0;n<NA;n++)
-	alu[n].estado=0;
+	int n, op = 0;
 	
-	int op=0;
-	leraluno(alu);
+	alunotab alu[NA];//Cria um array de estrutura para a tabela alunos/users
+	
+	for(n=0;n<NA;n++)
+		alu[n].estado=0;
+	
+	leraluno(alu);//popula a tabela alunos/users com a informação do ficheiro de texto
+	
+
+		
 	do{
 	
 	system("cls");
@@ -325,38 +327,40 @@ void admin(void)
 /***** LOGIN *****/
 int login(char username[15], char password [15])
 {
-	user tabela[10]={
+	/*alunotab tabela[10]={
 	{.idUser=21210,.nome="Manuel",.pass="123456"},
 	{.idUser=34638,.nome="Bruna",.pass="654321"},
 	{.idUser=52572,.nome="Ricardo",.pass="321456"},
 	{.idUser=1,.nome="admin",.pass="admin"}
-	};
+	};*/
 	
 	//int nr_registos = sizeof(tabela)/sizeof(struct user);
-	int i,j=0, idUser, test_user, test_pass;
-	char nome[15];
-	char pass[15];
+	int i,j=0, id_user, test_user, test_pass;
+	char login_nome[15]={}, login_pass[15]={};
 	
-	for(i=0; i<4;i++)
+	alunotab alu[NA]={0};
+	leraluno(alu);
+	
+	for(i=1; i<NA;i++)
 	{
-		strcpy(nome,tabela[i].nome);
-		strcpy(pass,tabela[i].pass);
-		idUser = tabela[i].idUser;
+		strcpy(login_nome,alu[i].nome);
+		strcpy(login_pass,alu[i].pass);
+		id_user = alu[i].iduser;
 	
-		int test_user=strcmp (nome,username);
-		int test_pass=strcmp (pass,password);
+		int test_user=strcmp (login_nome,username);
+		int test_pass=strcmp (login_pass,password);
 		
 		if(test_user == 0)
 		{
 			if(test_user == 0 && test_pass == 0) 
 			{
-				if(idUser==1)
+				if(id_user==1)
 				{
 					return 1;
 				}
 				else
 				{
-					return idUser;
+					return id_user;
 				}
 			}
 			else
@@ -378,8 +382,8 @@ main()
 {
 	
 	int op,i;
-	char username[15];
-	char password[15];
+	char username[15]="Jose Coelho";
+	char password[15]="123456";
 	int loginFlag;
 	int idUser;
 	
@@ -390,10 +394,12 @@ main()
 	printf("\t\t\t\tQuiz Master 3001\n\n");
 	printf("\n\n\nUsername: ");
 	fflush(stdin);
-	scanf("%[^\n]s", username);
+	//scanf("%[^\n]s", username);
+	//scanf("%[^\n]s", "admin");
 	fflush(stdin);
 	printf("Password: ");
-	scanf("%[^\n]s", password);
+	//scanf("%[^\n]s", password);
+	//scanf("%[^\n]s", "admin");
 	
 	
 	loginFlag = login(username,password);
