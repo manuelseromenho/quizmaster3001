@@ -41,32 +41,22 @@ void ler (perguntas *x)   //função ler o ficheiro
 		printf("Erro na Abertura de Leitura <Enter para Sair>");
 		getch(); exit(0);
 	}*/
-/*	for(n=1;n<NR;n++)
+    for(n=1;n<NR;n++)
 	{
 		fscanf(f,"%ld\n", &x[n].numero);
-		fscanf(f,"%[^\n]s",x[n].questao);
-        fscanf(f,"%[^\n]s",x[n].resposta1);
-        fscanf(f,"%[^\n]s",x[n].resposta2);
-        fscanf(f,"%[^\n]s",x[n].resposta3);	     	
-		fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);		      
+		fscanf(f," %[^\n]s",x[n].questao);
+        fscanf(f," %[^\n]s",x[n].resposta1);
+        fscanf(f," %[^\n]s",x[n].resposta2);
+        fscanf(f," %[^\n]s",x[n].resposta3);	     	
+		fscanf(f,"%d\n",x[n].respostacerta);
+		fscanf(f,"%d\n",x[n].estado);
+        
+      /*  fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);	*/	      
 	}
 	fclose(f);
 	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
 }
-*/
-for(n=1;n<NR;n++)
-	{
-		fscanf(f,"%ld\n",&x[n].numero);
-	/*	fscanf(f,"%s\n",x[n].questao);
-        fscanf(f,"%s\n",x[n].resposta1);
-        fscanf(f,"%s\n",x[n].resposta2);
-        fscanf(f,"%s\n",x[n].resposta3);	     	
-		fscanf(f,"%d\n",&x[n].respostacerta);	      
-        fscanf(f,"%d\n",&x[n].estado);*/		
-    }
-	fclose(f);
-	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
-}
+
 void mostrar(perguntas *x)//função para mostrar registos 
 {
 	int n;
@@ -162,7 +152,11 @@ main()
 	char op;
 	int n;
 	perguntas per[NR];
-	for(n=0;n<NR;n++)
+	
+	ler(per);
+	
+	
+    for(n=0;n<NR;n++)
 		per[n].estado=0;   /* limpa todo o Array de registos */
 	do{
 int calen[12][31]; 

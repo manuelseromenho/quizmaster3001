@@ -382,8 +382,8 @@ main()
 {
 	
 	int op,i;
-	char username[15]="Jose Coelho";
-	char password[15]="123456";
+	char username[15]="admin";
+	char password[15]="admin";
 	int loginFlag;
 	int idUser;
 	
