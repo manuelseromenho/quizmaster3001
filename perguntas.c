@@ -1,3 +1,4 @@
+
 #include <stdio.h> 
 #define NR 20           	   // Numero maximo de Registos  
 #include <windows.h>
@@ -31,24 +32,37 @@ void ler (perguntas *x)   //função ler o ficheiro
 {
 	FILE *f;
 	int n;
-	if(!(f=fopen("perguntas.txt","r")))
-	{
+	f=fopen("perguntas.txt","r");
+	/*{
 		printf("Erro na Abertura de Leitura <Enter para Sair>");
 		getch(); exit(0);
-	}
-	for(n=1;n<NR;n++)
+	}*/
+/*	for(n=1;n<NR;n++)
 	{
 		fscanf(f,"%ld\n", &x[n].numero);
 		fscanf(f,"%[^\n]s",x[n].questao);
         fscanf(f,"%[^\n]s",x[n].resposta1);
         fscanf(f,"%[^\n]s",x[n].resposta2);
         fscanf(f,"%[^\n]s",x[n].resposta3);	     	
-		fscanf(f,"\n%d\n%d\n", &x[n].respostacerta, &x[n].estado);		      
+		fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);		      
 	}
 	fclose(f);
 	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
 }
-
+*/
+for(n=1;n<NR;n++)
+	{
+		fscanf(f,"%ld\n",&x[n].numero);
+	/*	fscanf(f,"%s\n",x[n].questao);
+        fscanf(f,"%s\n",x[n].resposta1);
+        fscanf(f,"%s\n",x[n].resposta2);
+        fscanf(f,"%s\n",x[n].resposta3);	     	
+		fscanf(f,"%d\n",&x[n].respostacerta);	      
+        fscanf(f,"%d\n",&x[n].estado);*/		
+    }
+	fclose(f);
+	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
+}
 void mostrar(perguntas *x)//função para mostrar registos 
 {
 	int n;
@@ -58,7 +72,7 @@ void mostrar(perguntas *x)//função para mostrar registos
 		if(x[n].estado==1)
 		{
 			printf("NUMERO=%ld\nQuestão=%s\nResposta1=%s\nResposta2=%s\nResposta3=%s\nREspostaCerta=%d\nESTADO=%d\n\n",
-			x[n].numero,x[n].questao,x[n].resposta1,x[n].resposta2,x[n].resposta3,x[n].respostacerta, x[n].estado);
+			&x[n].numero,x[n].questao,x[n].resposta1,x[n].resposta2,x[n].resposta3,&x[n].respostacerta, &x[n].estado);
 		}
 	}
 	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
@@ -73,8 +87,8 @@ int inserir(perguntas *x) //função para inserir as perguntas
 	scanf("%ld%*c",&inser);
 	for(n=1;n<NR;n++)
 	{
-		
-		
+		if(x[n].estado!=1)
+		{
 			x[n].numero=inser;			
             printf("\n\n Por favor introduza a questao = "); gets(x[n].questao); 
             printf("\n\n Por favor introduza a Resposta 1 = "); gets(x[n].resposta1);
@@ -85,7 +99,7 @@ int inserir(perguntas *x) //função para inserir as perguntas
 			printf("\n\n\nRegisto Inserido <Enter para Continuar>");
 			getch();
 			return(1);
-		
+		}
 	}
 	printf("ERRO! Nao foi possivel Inserir"); getch(); return(0);
 }
@@ -121,7 +135,7 @@ void gravar(perguntas *x) //função gravar ficheiro
 {
 	FILE *f;
 	int n;
-	if(!(f=fopen("perguntas.txt","w")))
+	if(!(f=fopen("perguntas.txt","w+")))
 	{
 		printf("\n\n\nErro na Abertura para Gravar <Enter para Sair>");
 		getch();  exit(0);
@@ -143,9 +157,9 @@ main()
 {
 	char op;
 	int n;
-	perguntas perguntas[NR];
+	perguntas per[NR];
 	for(n=0;n<NR;n++)
-		perguntas[n].estado=0;   /* limpa todo o Array de registos */
+		per[n].estado=0;   /* limpa todo o Array de registos */
 	do{
 int calen[12][31]; 
 		system("chcp 1252"); system("color f0"); system("cls");
@@ -165,10 +179,10 @@ int calen[12][31];
 		 gotoxy(1,15); printf("|  Qual a sua opcao:   "); op=toupper(getch());
 		switch(op)
 		{
-       case 'I': inserir(perguntas); break;
-       case 'E': eliminar(perguntas); break;
-	   case 'M': mostrar(perguntas); break;
-	   case 'G': gravar(perguntas); break;
+       case 'I': inserir(per); break;
+       case 'E': eliminar(per); break;
+	   case 'M': mostrar(per); break;
+	   case 'G': gravar(per); break;
 	   case 'S': exit(0);
 		}
 	}while (op!='S' && op!='s');
