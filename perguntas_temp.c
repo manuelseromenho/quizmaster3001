@@ -32,7 +32,7 @@ void gotoxy(int x, int y) //função para colocar o cursor num determinado ponto
 
 
 
-void ler (perguntas *x)   //função ler o ficheiro
+void ler(perguntas *x)   //função ler o ficheiro
 {
 	FILE *f;
 	int n;
@@ -152,9 +152,7 @@ main()
 	char op;
 	int n;
 	perguntas per[NR];
-	
-	ler(per);
-	
+
 	
     for(n=0;n<NR;n++)
 		per[n].estado=0;   /* limpa todo o Array de registos */
