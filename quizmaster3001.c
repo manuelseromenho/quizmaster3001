@@ -238,20 +238,22 @@ void leraluno(alunotab *x)					//a funçao para ler do ficheiro do aluno/user
 	FILE *fich;
 	fich=fopen("users.txt","r");
 	
-		
 	for(n=1;n<NB;n++)
 	{
-		fscanf(fich,"%d\n", &k);
+
+		if(fscanf(fich,"%d\n", &k)==-1) //
+			break;
 		x[n].iduser = k;
 
 		fscanf(fich," %[^\n]s",nome);
 		strcpy (x[n].nome, nome);
 			
-		fscanf(fich,"%s\n",x[n].pass);						
+		fscanf(fich,"%s\n",x[n].pass);				
 		fscanf(fich,"%s\n",x[n].turma);   
 		fscanf(fich,"%d\n", &x[n].idade);
 		fscanf(fich,"%d\n", &x[n].estado);	      
 	}
+
 	fclose(fich);
 }
 
