@@ -3,7 +3,7 @@
 #include <string.h>
 #include <windows.h>
 
-#define NR 100           	   // Numero maximo de Registos  
+#define NR 20           	   // Numero maximo de Registos  
 
 
 typedef struct
@@ -16,8 +16,6 @@ typedef struct
 	int respostacerta;
 	int estado;		             // 0=livre	1=ocupado	
 }perguntas;
-
-
 void gotoxy(int x, int y) //função para colocar o cursor num determinado ponto
 
 {
@@ -32,22 +30,9 @@ void gotoxy(int x, int y) //função para colocar o cursor num determinado ponto
 
 }
 
-void mostrar(perguntas *x)//função para mostrar registos 
-{
-	int n;
-	system ("cls");
-	for(n=1;n<NR;n++)
-	{
-		if(x[n].estado==1)
-		{
-			printf("NUMERO=%ld\nQuestão=%s\nResposta1=%s\nResposta2=%s\nResposta3=%s\nREspostaCerta=%d\nESTADO=%d\n\n", 
-			x[n].numero,x[n].questao,x[n].resposta1,x[n].resposta2,x[n].resposta3,x[n].respostacerta, x[n].estado);
-		}
-	}
-	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
-}
 
-void ler (perguntas *x)   //função ler o ficheiro
+
+void ler(perguntas *x)   //função ler o ficheiro
 {
 	FILE *f;
 	int n;
@@ -63,16 +48,29 @@ void ler (perguntas *x)   //função ler o ficheiro
         fscanf(f," %[^\n]s",x[n].resposta1);
         fscanf(f," %[^\n]s",x[n].resposta2);
         fscanf(f," %[^\n]s",x[n].resposta3);	     	
-		fscanf(f,"%d",&x[n].respostacerta);
-		fscanf(f,"%d",&x[n].estado);
+		fscanf(f,"%d\n",x[n].respostacerta);
+		fscanf(f,"%d\n",x[n].estado);
         
       /*  fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);	*/	      
 	}
 	fclose(f);
-	//printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
+	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
 }
 
-
+void mostrar(perguntas *x)//função para mostrar registos 
+{
+	int n;
+	system ("cls");
+	for(n=1;n<NR;n++)
+	{
+		if(x[n].estado==1)
+		{
+			printf("NUMERO=%ld\nQuestão=%s\nResposta1=%s\nResposta2=%s\nResposta3=%s\nREspostaCerta=%d\nESTADO=%d\n\n",
+			&x[n].numero,x[n].questao,x[n].resposta1,x[n].resposta2,x[n].resposta3,&x[n].respostacerta, &x[n].estado);
+		}
+	}
+	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
+}
 
 int inserir(perguntas *x) //função para inserir as perguntas
 {
@@ -155,16 +153,11 @@ main()
 	int n;
 	perguntas per[NR];
 
-	for(n=0;n<NR;n++)
-		per[n].estado=0;
-		
-	ler(per);
 	
-	
-    
-		   /* limpa todo o Array de registos */
+    for(n=0;n<NR;n++)
+		per[n].estado=0;   /* limpa todo o Array de registos */
 	do{
-		int calen[12][31]; 
+int calen[12][31]; 
 		system("chcp 1252"); system("color f0"); system("cls");
          gotoxy(1,1); printf(" ______________________________________________________\n\n");
          gotoxy(1,2); printf("|-----------------Menu de questoes---------------------|\n\n");
