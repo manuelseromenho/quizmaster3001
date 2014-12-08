@@ -317,7 +317,6 @@ void admin(void)
 		case 5: inserirQuestoes();break;
 		case 6: consultEditQuestoes();break;
 		case 7: gravar(alu);
-	
 		}
 		
 			
@@ -384,8 +383,8 @@ main()
 {
 	
 	int op,i;
-	char username[15]="admin";
-	char password[15]="admin";
+	char username[15]={};
+	char password[15]={};
 	int loginFlag;
 	int idUser;
 	
@@ -394,14 +393,16 @@ main()
 
 	
 	printf("\t\t\t\tQuiz Master 3001\n\n");
+	
 	printf("\n\n\nUsername: ");
 	fflush(stdin);
-	//scanf("%[^\n]s", username);
-	//scanf("%[^\n]s", "admin");
+	scanf("%[^\n]s", username);
 	fflush(stdin);
+
 	printf("Password: ");
-	//scanf("%[^\n]s", password);
-	//scanf("%[^\n]s", "admin");
+	scanf("%[^\n]s", password);
+	fflush(stdin);
+
 	
 	
 	loginFlag = login(username,password);
