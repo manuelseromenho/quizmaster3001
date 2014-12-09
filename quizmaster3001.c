@@ -115,12 +115,21 @@ void inserir(alunotab *x)        //função para inserir alunos|users
 		system ("cls");
 		printf("Numero do aluno? ");
 		fflush(stdin);
-		//scanf("%d%*c",&inser);
-	}while(!scanf("%d%*c",&inser));
+		}while(!scanf("%d%*c",&inser));
+		
+			for(k=1;k<NA;k++)
+			{
+				if(x[k].iduser==inser)
+				{
+					printf("\n\nO numero ja esxite");
+					getch();
+					return;
+				}
+			}
 	
 		
 	
-	fflush(stdin);
+	
 	for(n=1;n<NA;n++)
 
 	{
