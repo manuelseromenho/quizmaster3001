@@ -115,21 +115,22 @@ void inserir(alunotab *x)        //função para inserir alunos|users
 		system ("cls");
 		printf("Numero do aluno? ");
 		fflush(stdin);
-		}while(!scanf("%d%*c",&inser));
-		
-			for(k=1;k<NA;k++)
-			{
-				if(x[k].iduser==inser)
-				{
-					printf("\n\nO numero ja esxite");
-					getch();
-					return;
-				}
-			}
+		//scanf("%d%*c",&inser);
+	}while(!scanf("%d%*c",&inser));
+
+	for(k=1;k<NA;k++)
+	{
+		if(x[k].iduser==inser)
+		{
+			printf("\n\nO numero ja esxite");
+			getch();
+			return;
+		}
+	}
 	
 		
 	
-	
+
 	for(n=1;n<NA;n++)
 
 	{
@@ -172,8 +173,8 @@ void consultarAluno(alunotab *x)		//função para consultar os alunos
 	{
 		if(x[n].estado==1)
 		{
-			printf("NUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nIdade=%d\nPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
-			x[n].iduser,x[n].pass,x[n].nome,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 		}
 	}
 	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
@@ -190,8 +191,8 @@ int elimAlunos(alunotab *x)				//função para eliminar os alunos
 	{
 		if(x[n].iduser==eli)
 		{
-			printf("NUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nIdade=%d\nPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
-			x[n].iduser,x[n].pass,x[n].nome,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 			printf("\n\nQuer mesmo eliminar? <S/N>");confere=getch();
 
 			if (confere!='S' && confere!='s')   
@@ -220,9 +221,8 @@ void edit(alunotab *x)							//função para editar a password do aluno
 	{
 		if(x[n].iduser==eli)
 		{
-			printf("NUMERO=%ld\nPASSWORD=%s\nNOME=%s\nturma=%s\nIdade=%d\nPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\n\n",
-			x[n].iduser,x[n].pass,x[n].nome,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
-			printf("\n\n Digite a nova password: ");
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);			printf("\n\n Digite a nova password: ");
 			fflush(stdin); 
 			scanf("%[^\n]s",x[n].pass);
 			printf("\nNova password inserida");
@@ -269,7 +269,7 @@ void leraluno(alunotab *x)					//a funçao para ler do ficheiro do aluno/user
 		fscanf(fich,"%s\n",x[n].pass);				
 		fscanf(fich,"%s\n",x[n].turma);   
 		fscanf(fich,"%d\n", &x[n].idade);
-		fscanf(fich,"%d\n", &x[n].estado);
+		fscanf(fich,"%d\n", &x[n].estado);	      
 		fflush(stdin);	
 		fscanf(fich,"%d\n", &x[n].rcertas);   
 		fflush(stdin);	
@@ -277,8 +277,7 @@ void leraluno(alunotab *x)					//a funçao para ler do ficheiro do aluno/user
 		fflush(stdin);	
 		fscanf(fich,"%d\n", &x[n].jganho);   
 		fflush(stdin);	
-		fscanf(fich,"%d\n", &x[n].jperdido); 	      
-	}
+		fscanf(fich,"%d\n", &x[n].jperdido);	}
 
 	fclose(fich);
 }
@@ -294,7 +293,7 @@ void gravar (alunotab *x)				//função para gravar no ficheiro
 	{
 		if(x[n].estado==1)
 		{
-			fprintf(fich,"%ld\n%s\n%s\n%s\n%d\n%d\n%d\n%d\n%d\n%d\n",x[n].iduser,x[n].pass,x[n].nome,x[n].turma, x[n].idade, x[n].estado,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
+			fprintf(fich,"%d\n%s\n%s\n%s\n%d\n%d\n",x[n].iduser,x[n].nome, x[n].pass,x[n].turma, x[n].idade, x[n].estado,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 		}
 	}
 	fclose(fich);
