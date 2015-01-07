@@ -44,14 +44,16 @@ void ler(perguntas *x)   //função ler o ficheiro
     for(n=1;n<NR;n++)
 	{
 		fscanf(f,"%ld\n", &x[n].numero);
-		fscanf(f," %[^\n]s",x[n].questao);
+		fflush(stdin);
+        fscanf(f," %[^\n]s",x[n].questao);
+        fflush(stdin);
         fscanf(f," %[^\n]s",x[n].resposta1);
+        fflush(stdin);
         fscanf(f," %[^\n]s",x[n].resposta2);
+        fflush(stdin);
         fscanf(f," %[^\n]s",x[n].resposta3);	     	
-		fscanf(f,"%d\n",x[n].respostacerta);
-		fscanf(f,"%d\n",x[n].estado);
-        
-      /*  fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);	*/	      
+	    fflush(stdin);
+        fscanf(f,"\n%d\n%d\n",&x[n].respostacerta, &x[n].estado);      
 	}
 	fclose(f);
 	printf("\n\n\nFicheiro Lido <Enter para Continuar>");getch();
@@ -152,7 +154,11 @@ main()
 	char op;
 	int n;
 	perguntas per[NR];
+	for(n=0;n<NR;n++)
+	per[n].estado=0;
+	
 
+    ler(per);
 	
     for(n=0;n<NR;n++)
 		per[n].estado=0;   /* limpa todo o Array de registos */
