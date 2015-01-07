@@ -32,6 +32,10 @@ typedef struct
 	char nome[60];
 	char turma [20];		
 	int idade;
+	int rcertas;
+	int rerradas;
+	int jganho;
+	int jperdido;
 	int estado;
 			             	
 }alunotab;
@@ -113,10 +117,20 @@ void inserir(alunotab *x)        //função para inserir alunos|users
 		fflush(stdin);
 		//scanf("%d%*c",&inser);
 	}while(!scanf("%d%*c",&inser));
+
+	for(k=1;k<NA;k++)
+	{
+		if(x[k].iduser==inser)
+		{
+			printf("\n\nO numero ja esxite");
+			getch();
+			return;
+		}
+	}
 	
 		
 	
-	fflush(stdin);
+
 	for(n=1;n<NA;n++)
 
 	{
@@ -137,6 +151,10 @@ void inserir(alunotab *x)        //função para inserir alunos|users
 			scanf("%d", &x[n].idade);
 			
 			x[n].estado=1;
+			x[n].rcertas=0;
+			x[n].rerradas=0;
+			x[n].jganho=0;
+			x[n].jperdido=0;
 			
 			printf("\n\n\nRegisto Inserido <Enter para Continuar>");
 			getch();
@@ -155,8 +173,8 @@ void consultarAluno(alunotab *x)		//função para consultar os alunos
 	{
 		if(x[n].estado==1)
 		{
-			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%d\n\n",
-			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade);
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 		}
 	}
 	printf("\n\n\nListagem Concluida <Enter para Continuar>");getch();
@@ -173,8 +191,8 @@ int elimAlunos(alunotab *x)				//função para eliminar os alunos
 	{
 		if(x[n].iduser==eli)
 		{
-			printf("\n\nNUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nidade=%d\nESTADO=%d\n\n",
-			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].estado);
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 			printf("\n\nQuer mesmo eliminar? <S/N>");confere=getch();
 
 			if (confere!='S' && confere!='s')   
@@ -203,8 +221,8 @@ void edit(alunotab *x)							//função para editar a password do aluno
 	{
 		if(x[n].iduser==eli)
 		{
-			printf("\n\nNUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nidade=%d\n\n",x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade);
-			printf("\n\n Digite a nova password: ");
+			printf("NUMERO=%d\nNOME=%s\nPASSWORD=%s\nturma=%s\nIdade=%dPerguntas certas=%d\nperguntas erradas=%d\njogos ganhos=%d\njogos perdidos=%d\n\n",
+			x[n].iduser,x[n].nome,x[n].pass,x[n].turma,x[n].idade,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);			printf("\n\n Digite a nova password: ");
 			fflush(stdin); 
 			scanf("%[^\n]s",x[n].pass);
 			printf("\nNova password inserida");
@@ -238,20 +256,29 @@ void leraluno(alunotab *x)					//a funçao para ler do ficheiro do aluno/user
 	FILE *fich;
 	fich=fopen("users.txt","r");
 	
-		
 	for(n=1;n<NB;n++)
 	{
-		fscanf(fich,"%d\n", &k);
+
+		if(fscanf(fich,"%d\n", &k)==-1) //
+			break;
 		x[n].iduser = k;
 
 		fscanf(fich," %[^\n]s",nome);
 		strcpy (x[n].nome, nome);
 			
-		fscanf(fich,"%s\n",x[n].pass);						
+		fscanf(fich,"%s\n",x[n].pass);				
 		fscanf(fich,"%s\n",x[n].turma);   
 		fscanf(fich,"%d\n", &x[n].idade);
 		fscanf(fich,"%d\n", &x[n].estado);	      
-	}
+		fflush(stdin);	
+		fscanf(fich,"%d\n", &x[n].rcertas);   
+		fflush(stdin);	
+		fscanf(fich,"%d\n", &x[n].rerradas);  
+		fflush(stdin);	
+		fscanf(fich,"%d\n", &x[n].jganho);   
+		fflush(stdin);	
+		fscanf(fich,"%d\n", &x[n].jperdido);	}
+
 	fclose(fich);
 }
 
@@ -266,7 +293,7 @@ void gravar (alunotab *x)				//função para gravar no ficheiro
 	{
 		if(x[n].estado==1)
 		{
-			fprintf(fich,"%d\n%s\n%s\n%s\n%d\n%d\n",x[n].iduser,x[n].nome, x[n].pass,x[n].turma, x[n].idade, x[n].estado);
+			fprintf(fich,"%d\n%s\n%s\n%s\n%d\n%d\n",x[n].iduser,x[n].nome, x[n].pass,x[n].turma, x[n].idade, x[n].estado,x[n].rcertas,x[n].rerradas,x[n].jganho,x[n].jperdido);
 		}
 	}
 	fclose(fich);
@@ -315,7 +342,6 @@ void admin(void)
 		case 5: inserirQuestoes();break;
 		case 6: consultEditQuestoes();break;
 		case 7: gravar(alu);
-	
 		}
 		
 			
@@ -382,8 +408,8 @@ main()
 {
 	
 	int op,i;
-	char username[15]="admin";
-	char password[15]="admin";
+	char username[15]={};
+	char password[15]={};
 	int loginFlag;
 	int idUser;
 	
@@ -392,14 +418,16 @@ main()
 
 	
 	printf("\t\t\t\tQuiz Master 3001\n\n");
+	
 	printf("\n\n\nUsername: ");
 	fflush(stdin);
-	//scanf("%[^\n]s", username);
-	//scanf("%[^\n]s", "admin");
+	scanf("%[^\n]s", username);
 	fflush(stdin);
+
 	printf("Password: ");
-	//scanf("%[^\n]s", password);
-	//scanf("%[^\n]s", "admin");
+	scanf("%[^\n]s", password);
+	fflush(stdin);
+
 	
 	
 	loginFlag = login(username,password);

@@ -2,17 +2,29 @@
 admin
 admin
 n/a_1
-0
+78
 1
+0
+0
+0
+0
+30101
+Jonas Savimbi
+123456
+4ªA
+123
+1
+0
+0
+0
+0
 21210
 Manuel Seromenho
 123456
-7ºB
-12
+8ªA
+123
 1
-23432
-pedro manuel
-654321
-8a
-14
-1
+0
+0
+0
+0
