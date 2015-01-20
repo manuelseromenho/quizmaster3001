@@ -1,0 +1,13 @@
+<map id="eliminarperg" name="eliminarperg">
+<area shape="rect" id="node2" href="$admin__perguntas_8h.html#a7ab3ce3466d990aa0d1f85a5d15a6716" title="Menu de Perguntas. " alt="" coords="145,81,252,108"/>
+<area shape="rect" id="node3" href="$login_8h.html#a0eac57f91f15716c9f3e15c935c69a8a" title="Menu Administrador. " alt="" coords="300,81,357,108"/>
+<area shape="rect" id="node4" href="$admin__aluno_8h.html#a5d3cb89467dc410ceb1ded2692ea1e1a" title="função para gravar " alt="" coords="405,5,495,32"/>
+<area shape="rect" id="node6" href="$login_8h.html#a5ca8c98e0ec07103720da6e2b8241eac" title="Menu de Login. " alt="" coords="427,107,473,133"/>
+<area shape="rect" id="node5" href="$admin__aluno_8h.html#adddc3998ca213a8620431d4d50a4ac1b" title="função gestao de alunos " alt="" coords="543,31,635,57"/>
+<area shape="rect" id="node7" href="$login_8h.html#a70c17e7e0c772226a81cccf10ff14a87" title="Menu aluno/user. " alt="" coords="562,107,615,133"/>
+<area shape="rect" id="node12" href="$main_8c.html#a51af30a60f9f02777c6396b8247e356f" title="main" alt="" coords="563,157,614,184"/>
+<area shape="rect" id="node8" href="$jogogen_8h.html#aa5261eb183e95885ae792f8ff46e3e53" title="Relatorio. " alt="" coords="683,31,751,57"/>
+<area shape="rect" id="node9" href="$jogogen_8h.html#af8fa28d8a123b8ae3b8d1a4201af5a02" title="funcao do jogo " alt="" coords="683,81,750,108"/>
+<area shape="rect" id="node11" href="$jogogen_8h.html#a9d5959cb84d9c4595414777c8b369a63" title="ranking dos jogadores(users/alunos) " alt="" coords="685,132,749,159"/>
+<area shape="rect" id="node10" href="$jogogen_8h.html#ae7b00fddd3e91259825cc51f1245bee9" title="Menu Jogar. " alt="" coords="799,132,849,159"/>
+</map>

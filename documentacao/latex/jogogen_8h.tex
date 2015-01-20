@@ -1,0 +1,326 @@
+\hypertarget{jogogen_8h}{\section{C\+:/\+Users/manuelseromenho/\+Desktop/quizmaster3001/source/jogogen.h File Reference}
+\label{jogogen_8h}\index{C\+:/\+Users/manuelseromenho/\+Desktop/quizmaster3001/source/jogogen.\+h@{C\+:/\+Users/manuelseromenho/\+Desktop/quizmaster3001/source/jogogen.\+h}}
+}
+
+
+ficheiro que trata do jogo genérico do Quizmaster 3001  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{jogogen_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{jogogen_8h_af8fa28d8a123b8ae3b8d1a4201af5a02}{jogogen} (int iduser, \hyperlink{structperguntas__rand}{perguntas\+\_\+rand} $\ast$rand\+\_\+x, \hyperlink{structalunotab}{alunotab} $\ast$alu, int indice)
+\begin{DoxyCompactList}\small\item\em funcao do jogo \end{DoxyCompactList}\item 
+void \hyperlink{jogogen_8h_a9d5959cb84d9c4595414777c8b369a63}{ranking} (int iduser, \hyperlink{structalunotab}{alunotab} $\ast$alu)
+\begin{DoxyCompactList}\small\item\em ranking dos jogadores(users/alunos) \end{DoxyCompactList}\item 
+void \hyperlink{jogogen_8h_ae7b00fddd3e91259825cc51f1245bee9}{jogar} (int iduser, \hyperlink{structalunotab}{alunotab} $\ast$alu, char $\ast$nome, int indice)
+\begin{DoxyCompactList}\small\item\em Menu Jogar. \end{DoxyCompactList}\item 
+void \hyperlink{jogogen_8h_aa5261eb183e95885ae792f8ff46e3e53}{relatorio} (int iduser, \hyperlink{structalunotab}{alunotab} $\ast$alu, char $\ast$nome, int indice)
+\begin{DoxyCompactList}\small\item\em Relatorio. \end{DoxyCompactList}\item 
+void \hyperlink{jogogen_8h_a70c17e7e0c772226a81cccf10ff14a87}{aluno} (int iduser, \hyperlink{structalunotab}{alunotab} $\ast$alu)
+\begin{DoxyCompactList}\small\item\em Menu aluno/user. \end{DoxyCompactList}\item 
+void \hyperlink{jogogen_8h_a0fec8b8a1101b6da82a9a791de123d4d}{classi} (int rerrada, char out\mbox{[}30\mbox{]})
+\begin{DoxyCompactList}\small\item\em Classificacao. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+ficheiro que trata do jogo genérico do Quizmaster 3001 
+
+Esta parte do código executa o jogo, utilizando toda a informação armazenada nos ficheiros \char`\"{}users.\+txt\char`\"{} e \char`\"{}perguntas.\+txt\char`\"{} \begin{DoxyAuthor}{Author}
+Manuel Seromenho 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 Janeiro 2015 
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000003}{Bug}]sem erros detetados \begin{DoxyWarning}{Warning}
+nenhum warning 
+\end{DoxyWarning}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Copyright}
+G\+N\+U Public License. 
+\end{DoxyCopyright}
+\end{DoxyRefDesc}
+
+
+\subsection{Function Documentation}
+\hypertarget{jogogen_8h_a70c17e7e0c772226a81cccf10ff14a87}{\index{jogogen.\+h@{jogogen.\+h}!aluno@{aluno}}
+\index{aluno@{aluno}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{aluno}]{\setlength{\rightskip}{0pt plus 5cm}void aluno (
+\begin{DoxyParamCaption}
+\item[{int}]{iduser, }
+\item[{{\bf alunotab} $\ast$}]{alu}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_a70c17e7e0c772226a81cccf10ff14a87}
+
+
+Menu aluno/user. 
+
+funcao menu aluno 
+\begin{DoxyParams}{Parameters}
+{\em iduser} & \+: int \\
+\hline
+{\em $\ast$alu} & \+: alunotab \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_a70c17e7e0c772226a81cccf10ff14a87_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_a70c17e7e0c772226a81cccf10ff14a87_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jogogen_8h_a0fec8b8a1101b6da82a9a791de123d4d}{\index{jogogen.\+h@{jogogen.\+h}!classi@{classi}}
+\index{classi@{classi}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{classi}]{\setlength{\rightskip}{0pt plus 5cm}void classi (
+\begin{DoxyParamCaption}
+\item[{int}]{rerrada, }
+\item[{char}]{out\mbox{[}30\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_a0fec8b8a1101b6da82a9a791de123d4d}
+
+
+Classificacao. 
+
+funcao que determina a classicação do jogador 
+\begin{DoxyParams}{Parameters}
+{\em rerrada} & \+: float \\
+\hline
+{\em out\mbox{[}$\,$\mbox{]}} & \+: char \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_a0fec8b8a1101b6da82a9a791de123d4d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jogogen_8h_ae7b00fddd3e91259825cc51f1245bee9}{\index{jogogen.\+h@{jogogen.\+h}!jogar@{jogar}}
+\index{jogar@{jogar}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{jogar}]{\setlength{\rightskip}{0pt plus 5cm}void jogar (
+\begin{DoxyParamCaption}
+\item[{int}]{iduser, }
+\item[{{\bf alunotab} $\ast$}]{alu, }
+\item[{char $\ast$}]{nome, }
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_ae7b00fddd3e91259825cc51f1245bee9}
+
+
+Menu Jogar. 
+
+funcao inicio do jogo (caso seja necessário futuramente será possivel escolher outros modos de jogo para além do genérico) 
+\begin{DoxyParams}{Parameters}
+{\em iduser} & \+: int \\
+\hline
+{\em $\ast$alu} & \+: alunotab \\
+\hline
+{\em nome} & \+: $\ast$char \\
+\hline
+{\em indice} & \+: indice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_ae7b00fddd3e91259825cc51f1245bee9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_ae7b00fddd3e91259825cc51f1245bee9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jogogen_8h_af8fa28d8a123b8ae3b8d1a4201af5a02}{\index{jogogen.\+h@{jogogen.\+h}!jogogen@{jogogen}}
+\index{jogogen@{jogogen}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{jogogen}]{\setlength{\rightskip}{0pt plus 5cm}void jogogen (
+\begin{DoxyParamCaption}
+\item[{int}]{iduser, }
+\item[{{\bf perguntas\+\_\+rand} $\ast$}]{rand\+\_\+x, }
+\item[{{\bf alunotab} $\ast$}]{alu, }
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_af8fa28d8a123b8ae3b8d1a4201af5a02}
+
+
+funcao do jogo 
+
+funcao do jogo (esta funcao executa o jogo em si) 
+\begin{DoxyParams}{Parameters}
+{\em iduser} & \+: int \\
+\hline
+{\em $\ast$rand\+\_\+x} & \+: \hyperlink{structperguntas__rand}{perguntas\+\_\+rand} \\
+\hline
+{\em $\ast$alu} & \+: alunotab \\
+\hline
+{\em indice} & \+: indice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_af8fa28d8a123b8ae3b8d1a4201af5a02_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_af8fa28d8a123b8ae3b8d1a4201af5a02_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jogogen_8h_a9d5959cb84d9c4595414777c8b369a63}{\index{jogogen.\+h@{jogogen.\+h}!ranking@{ranking}}
+\index{ranking@{ranking}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{ranking}]{\setlength{\rightskip}{0pt plus 5cm}void ranking (
+\begin{DoxyParamCaption}
+\item[{int}]{iduser, }
+\item[{{\bf alunotab} $\ast$}]{alu}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_a9d5959cb84d9c4595414777c8b369a63}
+
+
+ranking dos jogadores(users/alunos) 
+
+funcao ranking, analisa a pontuação de casa jogador e lista ordenadamente 
+\begin{DoxyParams}{Parameters}
+{\em iduser} & \+: int \\
+\hline
+{\em $\ast$alu} & \+: alunotab \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_a9d5959cb84d9c4595414777c8b369a63_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_a9d5959cb84d9c4595414777c8b369a63_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{jogogen_8h_aa5261eb183e95885ae792f8ff46e3e53}{\index{jogogen.\+h@{jogogen.\+h}!relatorio@{relatorio}}
+\index{relatorio@{relatorio}!jogogen.\+h@{jogogen.\+h}}
+\subsubsection[{relatorio}]{\setlength{\rightskip}{0pt plus 5cm}void relatorio (
+\begin{DoxyParamCaption}
+\item[{int}]{iduser, }
+\item[{{\bf alunotab} $\ast$}]{alu, }
+\item[{char $\ast$}]{nome, }
+\item[{int}]{indice}
+\end{DoxyParamCaption}
+)}}\label{jogogen_8h_aa5261eb183e95885ae792f8ff46e3e53}
+
+
+Relatorio. 
+
+funcao para relatorio de informação do aluno 
+\begin{DoxyParams}{Parameters}
+{\em iduser} & \+: int \\
+\hline
+{\em $\ast$alu} & \+: alunotab \\
+\hline
+{\em nome} & \+: $\ast$char \\
+\hline
+{\em indice} & \+: indice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_aa5261eb183e95885ae792f8ff46e3e53_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jogogen_8h_aa5261eb183e95885ae792f8ff46e3e53_icgraph}
+\end{center}
+\end{figure}
+
+

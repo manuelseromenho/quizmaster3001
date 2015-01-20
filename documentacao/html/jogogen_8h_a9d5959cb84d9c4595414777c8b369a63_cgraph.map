@@ -1,0 +1,26 @@
+<map id="ranking" name="ranking">
+<area shape="rect" id="node2" href="$jogogen_8h.html#a0fec8b8a1101b6da82a9a791de123d4d" title="Classificacao. " alt="" coords="1353,43,1409,69"/>
+<area shape="rect" id="node3" href="$jogogen_8h.html#a70c17e7e0c772226a81cccf10ff14a87" title="Menu aluno/user. " alt="" coords="117,144,171,171"/>
+<area shape="rect" id="node4" href="$jogogen_8h.html#ae7b00fddd3e91259825cc51f1245bee9" title="Menu Jogar. " alt="" coords="1131,144,1182,171"/>
+<area shape="rect" id="node6" href="$jogogen_8h.html#aa5261eb183e95885ae792f8ff46e3e53" title="Relatorio. " alt="" coords="1123,812,1191,839"/>
+<area shape="rect" id="node7" href="$admin__aluno_8h.html#a5ca8c98e0ec07103720da6e2b8241eac" title="Menu de Login. " alt="" coords="219,237,265,264"/>
+<area shape="rect" id="node5" href="$jogogen_8h.html#af8fa28d8a123b8ae3b8d1a4201af5a02" title="funcao do jogo " alt="" coords="1239,93,1305,120"/>
+<area shape="rect" id="node8" href="$admin__aluno_8h.html#a492a0d7c8e5e95d782d96e3b29109b4a" title="funcao para ler do ficheiro do aluno/user " alt="" coords="991,275,1058,301"/>
+<area shape="rect" id="node9" href="$login_8h.html#a569aa668fcda751099ddec849b7938c3" title="Login. " alt="" coords="1000,413,1049,440"/>
+<area shape="rect" id="node10" href="$login_8h.html#a0eac57f91f15716c9f3e15c935c69a8a" title="Menu Administrador. " alt="" coords="313,332,371,359"/>
+<area shape="rect" id="node25" href="$login_8h.html#a70c17e7e0c772226a81cccf10ff14a87" title="Menu aluno/user. " alt="" coords="998,207,1051,233"/>
+<area shape="rect" id="node11" href="$admin__aluno_8h.html#adddc3998ca213a8620431d4d50a4ac1b" title="função gestao de alunos " alt="" coords="419,496,511,523"/>
+<area shape="rect" id="node18" href="$admin__perguntas_8h.html#a7ab3ce3466d990aa0d1f85a5d15a6716" title="Menu de Perguntas. " alt="" coords="820,699,927,725"/>
+<area shape="rect" id="node24" href="$login_8h.html#a5ca8c98e0ec07103720da6e2b8241eac" title="Menu de Login. " alt="" coords="850,332,897,359"/>
+<area shape="rect" id="node12" href="$admin__aluno_8h.html#a95ea7a920a9f3bbd4376f2ca5ae24e9b" title="função para inserir novos alunos " alt="" coords="567,547,658,573"/>
+<area shape="rect" id="node13" href="$admin__aluno_8h.html#a1bbc96567c4165ce3093566cf12a8d83" title="funcao para consultar os alunos " alt="" coords="559,597,667,624"/>
+<area shape="rect" id="node14" href="$admin__aluno_8h.html#afe4837590a9a74173a073ddba2f88d02" title="função para eliminar os alunos " alt="" coords="569,395,656,421"/>
+<area shape="rect" id="node15" href="$admin__aluno_8h.html#acf884dc8124dd4077bc0d46708bacb35" title="função para editar alunos " alt="" coords="575,496,651,523"/>
+<area shape="rect" id="node16" href="$admin__aluno_8h.html#a5d3cb89467dc410ceb1ded2692ea1e1a" title="função para gravar " alt="" coords="568,445,657,472"/>
+<area shape="rect" id="node17" href="$admin__aluno_8h.html#a0eac57f91f15716c9f3e15c935c69a8a" title="Menu Administrador. " alt="" coords="715,547,772,573"/>
+<area shape="rect" id="node19" href="$admin__perguntas_8h.html#a921c1f88176bd80774d8d1eaa3a80002" title="funcao para ler o ficheiro de perguntas " alt="" coords="978,547,1071,573"/>
+<area shape="rect" id="node20" href="$admin__perguntas_8h.html#a273151aa6319565d10bb075007dcc3a9" title="funcao para inserir perguntas " alt="" coords="983,597,1066,624"/>
+<area shape="rect" id="node21" href="$admin__perguntas_8h.html#a3d87d64c49b1c5769f6febdacb72f96d" title="funçao para eliminar perguntas " alt="" coords="979,648,1071,675"/>
+<area shape="rect" id="node22" href="$admin__perguntas_8h.html#a5307a3752b688902193da2e92fc86109" title="funcao para consultar perguntas " alt="" coords="975,749,1075,776"/>
+<area shape="rect" id="node23" href="$admin__perguntas_8h.html#a579492a6090f14af5ca1018dc507e3db" title="funcao para gravar no ficheiro " alt="" coords="1129,724,1185,751"/>
+</map>
